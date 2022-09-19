@@ -1,0 +1,49 @@
+{
+  "name": "docs.lingman.tech",
+  "packageManager": "pnpm@7.3.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs --port 7172",
+    "build": "vite build && vitepress build docs",
+    "serve": "vitepress serve docs",
+    "menu": "esno scripts/menu.ts",
+    "login": "vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "git": "git add . && git commit -m '2' && git push"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^2.0.1",
+    "element-plus": "^2.2.14",
+    "lingman-web": "^1.0.1657021160",
+    "md5": "^2.3.0",
+    "unocss": "^0.45.9",
+    "unplugin-auto-import": "^0.11.2",
+    "vitepress": "1.0.0-alpha.4",
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@djie/eslint-config": "^1.0.11",
+    "@types/node": "^18.6.5",
+    "eslint": "^8.21.0",
+    "esno": "^0.16.3",
+    "fs-extra": "^10.1.0",
+    "sass": "^1.54.5"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "@types/react",
+        "react",
+        "react-dom",
+        "esbuild",
+        "typescript"
+      ]
+    }
+  }
+}
