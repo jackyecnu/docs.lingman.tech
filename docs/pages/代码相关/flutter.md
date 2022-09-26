@@ -1,5 +1,174 @@
 # Flutter 学习
 
+## 常用参考网站
+
+## 编程语言：Dart
+
+### 默认可选参数 和 默认位置参数
+
+```dart
+//自定义方法，默认参数
+int add3([int a = 1, int b = 2]) {
+  return a + b;
+}
+ 
+//自定义方法，命名参数
+ 
+int add4(int a, {int b = 4}) {
+  return a + b;
+}
+  print(add3()); //3
+  print(add3(9, 89)); // 98
+  print(add4(1, b: 16)); //17
+```
+
+### aysnc、await、future
+
+和JS一样，future相当于promise
+
+可以将任意函数转换为**async**函数,在future中自动包裹return状态
+
+```dart
+Future<int> futureInt() async {
+  // 1
+  return 1;
+}
+```
+
+```dart
+Future((){
+    throw "发生错误了";
+    return "你好";
+  }).then((value) => print("我就是value"))
+      .catchError((error)=>print("当前error==$error"))
+      .whenComplete(() => print("当前事件结束了"));
+```
+
+### dart中的事件循环
+
+在dart中实际上有两种队列:
+1.事件队列(event queue):包含所有的外来事件:**I/O,mouse events, drawing events,timers,isolate**之间的信息传递
+
+2.微任务队列(**microtask queue**):表示一个短时间内就会完成的异步任务，它的优先级最高，高于event queue,只要队列中还有任务，就可以一直霸占着事件循环。**microtask queue*添加的任务只要是由Dart内部产生
+
+### 构造函数
+
+1. 普通构造函数
+
+```dart
+class Point{
+  num x,y;
+  //this指当前实例，Dart中，只有名称冲突时才使用它，否则，Dart的代码风格是要省略this的。
+  Point(num x,num y){
+    this.x = x ;
+    this.y = y ; 
+  }
+}
+```
+
+缩写
+
+```dart
+class Point{
+  num x,y;
+  Point(this.x,this.y);
+}
+```
+
+**简而言之：所有的构造函数，如果不指定，只会调用父类默认的无参构造。**
+
+如果想要调用父类的特定的构造函数，需要使用双引号:super来指定。、
+
+命名构造函数,为了可读性
+
+```dart
+class Point{
+  num x , y ;
+  Point(this.x , this.y) ;
+  Point.origin(){
+    this.x = 10 ;
+    this.y = 10 ;
+  }
+  //构造参数为实例变量直接赋值
+  Point.rect(this.x ,this.y) ;
+  void pointPrint(){
+    print('x = $x , y = $y ');
+  }
+}
+//调用
+Point p = Point.origin() ;
+p.pointPrint();
+```
+
+更多构造函数用法请访问
+[https://www.jianshu.com/p/e59052e49bf3/](https://www.jianshu.com/p/e59052e49bf3/)
+
+### 数组操作函数
+
+```dart
+// forEach()循环
+var fruits = [‘banana’, ‘pineapple’, ‘watermelon’];
+fruits.forEach((fruit) => print(fruit)); // => banana pineapple watermelon
+
+// map() 产生一个新的列表
+var mappedFruits = fruits.map((fruit) => ‘I love $fruit’).toList();
+print(mappedFruits); // => ['I love banana', ‘I love pineapple’, ‘I love watermelon’]
+
+// contains() 相当于 js 的 includes
+var numbers = [1, 3, 2, 5, 4];
+print(numbers.contains(2)); // => true
+
+// sort() 给数组排序
+numbers.sort((num1, num2) => num1 - num2); // => [1, 2, 3, 4, 5]
+
+// reduce(), fold() 聚合
+var sum = numbers.reduce((curr, next) => curr + next);
+print(sum); // => 15
+const initialValue = 10;
+var sum2 = numbers.fold(initialValue, (curr, next) => curr + next);
+print(sum2); // => 25
+
+// every() 相当于js的 every，当每个元素都通过条件为true
+List<Map<String, dynamic>> users = [
+  { “name”: ‘John’, “age”: 18 },
+  { “name”: ‘Jane’, “age”: 21 },
+  { “name”: ‘Mary’, “age”: 23 },
+];
+var is18AndOver = users.every((user) => user[“age”] >= 18);
+print(is18AndOver); // => true
+
+// where(), firstWhere(), singleWhere() 相当于js的where find 等方法
+// See #6 for users list
+var over21s = users.where((user) => user[“age”] > 21);
+print(over21s.length); // => 1
+var nameJ = users.firstWhere((user) => user[“name”].startsWith(‘J’), orElse: () => null);
+print(nameJ); // => {name: John, age: 18}
+var under18s = users.singleWhere((user) => user[“age”] < 18, orElse: () => null);
+print(under18s); // => null
+
+// take(), skip()
+var fiboNumbers = [1, 2, 3, 5, 8, 13, 21];
+print(fiboNumbers.take(3).toList()); // => [1, 2, 3]
+print(fiboNumbers.skip(5).toList()); // => [13, 21]
+print(fiboNumbers.take(3).skip(2).take(1).toList()); // => [3]
+
+// List.from() 根据指定的集合创建一个新的集合
+var clonedFiboNumbers = List.from(fiboNumbers);
+print(‘Cloned list: $clonedFiboNumbers’);
+
+//expand() ， 将每个元素编程零个活多个元素
+var pairs = [[1, 2], [3, 4]];
+var flattened = pairs.expand((pair) => pair).toList();
+print(‘Flattened result: $flattened’); // => [1, 2, 3, 4]
+var input = [1, 2, 3];
+var duplicated = input.expand((i) => [i, i]).toList();
+print(duplicated); // => [1, 1, 2, 2, 3, 3]
+```
+
+## 编程框架：flutter
+
+## 代码架构
+
 **前端开发**无非就两步第一是**布局**、第二是**请求数据刷新界面**
 
 ## 四大组件
