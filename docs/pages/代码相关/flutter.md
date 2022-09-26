@@ -218,9 +218,11 @@ print(Get.arguments);
 
 #### 两种状态管理
 
+![状态管理](/public/static/images/flutter/state_why.png)
+
 简单状态管理（主动update）vs响应式状态管理(Getx 和 obs)
 
-![路径](/public/static/images/flutter/state.png)
+![状态管理](/public/static/images/flutter/state.png)
 
 #### GetxController及生命周期
 
