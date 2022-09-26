@@ -169,6 +169,8 @@ print(duplicated); // => [1, 1, 2, 2, 3, 3]
 
 ### widget树，查看，调试能力
 
+![路径](/public/static/images/flutter/widget_tree.png)
+
 ### GetX
 
 #### Getx 路由跳转等
