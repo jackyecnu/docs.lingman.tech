@@ -169,13 +169,58 @@ print(duplicated); // => [1, 1, 2, 2, 3, 3]
 
 ### widget树，查看，调试能力
 
-![路径](/public/static/images/flutter/widget_tree.png)
+![Widget Tree](/public/static/images/flutter/widget_tree.png)
 
 ### GetX
 
 #### Getx 路由跳转等
 
+```dart
+//不用命名路由方式
+Get.to(NextScreen());
+Get.back();
+Get.off(NextScreen());
+Get.offAll(NextScreen());
+var data = await Get.to(Payment());
+Get.back(result: 'success');
+
+//用命名路由的方式
+Get.toNamed("/NextScreen");
+Get.offNamed("/NextScreen");
+Get.offAllNamed("/NextScreen");
+```
+
+```dart
+void main() {
+  runApp(
+    GetMaterialApp(
+      unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => MyHomePage()),
+        GetPage(name: '/second', page: () => Second()),
+        GetPage(
+          name: '/third',
+          page: () => Third(),
+          transition: Transition.zoom  
+        ),
+      ],
+    )
+  );
+}
+```
+
+```dart
+Get.offAllNamed("/NextScreen?device=phone&id=354&name=Enzo");
+Get.toNamed("/NextScreen", arguments: 'Get is the best');
+print(Get.arguments);
+```
+
 #### 两种状态管理
+
+简单状态管理（主动update）vs响应式状态管理(Getx 和 obs)
+
+![路径](/public/static/images/flutter/state.png)
 
 #### GetxController及生命周期
 
