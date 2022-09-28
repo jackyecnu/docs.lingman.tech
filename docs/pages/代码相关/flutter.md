@@ -49,7 +49,7 @@ Future((){
 在dart中实际上有两种队列:
 1.事件队列(event queue):包含所有的外来事件:**I/O,mouse events, drawing events,timers,isolate**之间的信息传递
 
-2.微任务队列(**microtask queue**):表示一个短时间内就会完成的异步任务，它的优先级最高，高于event queue,只要队列中还有任务，就可以一直霸占着事件循环。**microtask queue*添加的任务只要是由Dart内部产生
+2.微任务队列(**microtask queue**):表示一个短时间内就会完成的异步任务，它的优先级最高，高于event queue,只要队列中还有任务，就可以一直霸占着事件循环。**microtask queue**添加的任务只要是由Dart内部产生
 
 ### 构造函数
 
@@ -178,8 +178,11 @@ print(duplicated); // => [1, 1, 2, 2, 3, 3]
 ```dart
 //不用命名路由方式
 Get.to(NextScreen());
+//要关闭snackbars, dialogs, bottomsheets或任何你通常会用Navigator.pop(context)关闭的东西。
 Get.back();
+//进入下一个页面，但没有返回上一个页面的选项（用于闪屏页，登录页面等）
 Get.off(NextScreen());
+//进入下一个页面并取消之前的所有路由（在购物车、投票和测试中很有用）。
 Get.offAll(NextScreen());
 var data = await Get.to(Payment());
 Get.back(result: 'success');
@@ -188,7 +191,20 @@ Get.back(result: 'success');
 Get.toNamed("/NextScreen");
 Get.offNamed("/NextScreen");
 Get.offAllNamed("/NextScreen");
+
+//弹出之前的堆栈
+Get.offNamedUntil('home', (route) => false);
+// //反复返回，直到表达式返回真。 
+Get.until((route) => !Get.isDialogOpen);
+Get.until((route) => !Get.routingHistory.contains('/someRoute'));
+// 转到下一条路由，并删除所有之前的路由，直到表达式返回true。 
+Get.offUntil(page, (route) => false)
+
+// 转到下一个命名的路由，并删除所有之前的路由，直到表达式返回true。
+Get.offNamedUntil()
 ```
+
+Get使用APi： <https://www.jianshu.com/p/ed83a0a3295d>
 
 ```dart
 void main() {
