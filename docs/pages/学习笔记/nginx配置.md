@@ -1,0 +1,55 @@
+# nginx 配置
+
+**文档地址** <https://tsejx.github.io/devops-guidebook/server/nginx/configuration-grammar>
+
+```shell
+# main 全局块
+# Events 块
+events { }
+# Http 块
+# 配置使用最频繁的部分，代理、缓存、日志定义等绝大多数功能和第三方模块的配置都在这里设置
+http {
+  # Server 块
+  server {
+    # Location 块
+    location [PATTERN] {}
+    location [PATTERN] {}
+  }
+}
+```
+
+**main**：Nginx 的全局配置，对全局生效
+**events**：配置影响 Nginx 服务器或与用户的网络连接
+**http**：可以嵌套多个 Server，配置代理、缓存、日志定义等绝大多数功能和第三方模块的配置
+**server**：配置虚拟主机的相关参数，一个 HTTP 中可以有多个 server 块
+**location**：用于配置请求的路由，以及各种页面的处理情况
+**upstream**：配置后端服务器具体地址，负载均衡配置不可或缺的部分
+
+配置文件的语法规则：
+
+配置文件由指定的指令控制，指令分为 **简单指令** 与 **指令块** 构成
+简单指令包含 **指令名称** 和 **指令参数**
+指令与参数间以空格符号分隔，每条指令以 **;** 分号结尾
+指令块以 **{}**大括号将多条指令组织在一起
+**include** 语句允许组合多个配置文件以提升可维护性
+使用 **#** 符号添加注释，提高可读性
+使用 **$** 符号使用变量
+部分指令的参数支持正则表达式
+
+## server_name 指定虚拟主机域名
+
+匹配优先级： **精准匹配 > 左侧通配符匹配 > 右侧通配符匹配 > 正则表达式匹配**
+
+## root 指定静态资源目录位置
+
+```shell
+location /image {
+  root /opt/nginx/static;
+}
+```
+
+当用户访问 **www.test.com/image/1.png** 时，实际在服务器找的路径是 **/opt/nginx/static/image/1.png。**
+
+## location
+
+![目录](/public/static/images/other/nginx1.png)
