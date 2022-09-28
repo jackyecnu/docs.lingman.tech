@@ -244,8 +244,8 @@ print(Get.arguments);
 
 GetxController只是有个 update 方法用于通知组件刷新
 
-**onInit**：组件在内存分配后会被马上调用，可以在这个方法对 controller 做一些初始化工作。
-**onReady**：这里是在 onInit 一帧后被调用，适合做一些导航进入的事件，例如对话框提示、SnackBar 或异步网络请求。
+**onInit**：组件在内存分配后会被马上调用，可以在这个方法对 controller 做一些初始化工作。   
+**onReady**：这里是在 onInit 一帧后被调用，适合做一些导航进入的事件，例如对话框提示、SnackBar 或异步网络请求。   
 **onClose**：在 onDelete 方法前调用、用于销毁 controller 使用的资源，例如关闭事件监听，关闭流对象，或者销毁可能造成内存泄露的对象，例如 TextEditingController，AniamtionController。也适用于将数据进行离线持久化。没有view引用的时候自动调用
 
 网络请求等异步操作最好放在 GetxController 的 onReady 生命周期函数中处理
