@@ -261,8 +261,7 @@ GetxController只是有个 update 方法用于通知组件刷新
 |model||各种模型集合|
 | ∟|response_model| 返回模型|
 | ∟|entity|实体模型|
-| ∟|domain_model|领域模型|
-| ∟|domain_model|领域模型|
+| ∟|domain_model|领域模型| 
 |common||项目相关性公共的模块|
 | ∟|demon_config.dart|项目总注入依赖|
 | ∟|app_config.dart|app设置|
