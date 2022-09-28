@@ -1,6 +1,7 @@
 # nginx 配置
 
-**文档地址** <https://tsejx.github.io/devops-guidebook/server/nginx/configuration-grammar>
+**文档地址**
+<https://tsejx.github.io/devops-guidebook/server/nginx/configuration-grammar>
 
 ```shell
 # main 全局块
