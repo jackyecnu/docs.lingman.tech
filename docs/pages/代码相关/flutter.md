@@ -137,7 +137,7 @@ List<Map<String, dynamic>> users = [
 var is18AndOver = users.every((user) => user[“age”] >= 18);
 print(is18AndOver); // => true
 
-// where(), firstWhere(), singleWhere() 相当于js的where find 等方法
+// where(), firstWhere(), singleWhere() 相当于js的filter find 等方法
 // See #6 for users list
 var over21s = users.where((user) => user[“age”] > 21);
 print(over21s.length); // => 1
