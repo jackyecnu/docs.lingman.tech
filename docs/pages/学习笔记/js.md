@@ -155,10 +155,21 @@ arr.includes(3)
 Array.from({length:10},(d,a)=>1 + a)
 //输出[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+// slice、substring、substr 根据位置截取
+//不传参数：如果不传参数，默认结果为本身
+//区别：slice 可用于数组截取， substring、substr 只能用于字符串截取，可用看方法的命名方式记下。
+var str="www.runoob.com!";
+document.write(str.slice(4)+"<br>"); // 从第 5 个字符开始截取到末尾
+document.write(str.slice(4,10)); // 从第 5 个字符开始截取到第10个字符
+
+
+// substring
+
 ```
 
 <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every>
-
+slice、substring、substr
+<https://zhuanlan.zhihu.com/p/143369330>
 ## 模块化
 
 两种导出方式
