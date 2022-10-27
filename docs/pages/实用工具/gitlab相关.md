@@ -42,3 +42,20 @@ sudo docker exec -it gitlab /bin/bash
 ## 版本升级路径
 
 <https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/>
+
+## M arm cpu的mac安装
+
+可以在阿里云服务器下载，然后到oss去安装
+
+```sh
+sudo curl --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-arm64"
+```
+
+```sh
+sudo chmod +x /usr/local/bin/gitlab-runner
+```
+
+```sh
+sudo gitlab-runner install --user jacky 
+sudo gitlab-runner start 
+```
