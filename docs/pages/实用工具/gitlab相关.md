@@ -16,7 +16,7 @@ sudo docker run --detach \
  --volume /app/gitlab/config:/etc/gitlab \
  --volume /app/gitlab/logs:/var/log/gitlab \
  --volume /app/gitlab/data:/var/opt/gitlab \
-8b51e7abd504
+gitlab/gitlab-ce:14.9.5-ce.0
 ```
 
 ## 查看日志
