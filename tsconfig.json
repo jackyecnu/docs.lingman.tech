@@ -18,5 +18,5 @@
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
   },
-  "exclude": ["docs"]
+  "exclude": ["docs","lingman.config.js"]
 }
